@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Producto } from '../../models/producto';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './productos.html',
   styleUrl: './productos.css',
 })
@@ -26,7 +27,7 @@ export class Productos {
       descripcion: "My Chemical Romance",
       precio: 24000,
       stock: 30,
-      imagen: "assets/tbp.png",
+      imagen: "assets/tbp.jpg",
       categoria: "vinilo",
       disponibilidad: true,
     },
@@ -36,7 +37,7 @@ export class Productos {
       descripcion: "Green Day",
       precio: 30000,
       stock: 15,
-      imagen: "assets/american-idiot.png",
+      imagen: "assets/american-idiot.jpg",
       categoria: "album",
       disponibilidad: true,
     },
@@ -48,7 +49,7 @@ export class Productos {
       stock: 25,
       imagen: "assets/dookie.png",
       categoria: "vinilo",
-      disponibilidad: false,
+      disponibilidad: true,
     },
     {
       id: 5,
@@ -56,7 +57,7 @@ export class Productos {
       descripcion: "Linkin Park",
       precio: 20000,
       stock: 15,
-      imagen: "",
+      imagen: "assets/meteora.png",
       categoria: "album",
       disponibilidad: true,
     },
@@ -66,10 +67,20 @@ export class Productos {
       descripcion: "Linkin Park",
       precio: 30000,
       stock: 10,
-      imagen: "",
+      imagen: "assets/HT.jpg",
       categoria: "vinilo",
-      disponibilidad: false,
-    }
+      disponibilidad: true,
+    },
+    // {
+    //   id: 7,
+    //   nombre: "Danger Days",
+    //   descripcion: "My Chemical Romance",
+    //   precio: 19000,
+    //   stock: 15,
+    //   imagen: "assets/danger-days.png",
+    //   categoria: "CD",
+    //   disponibilidad: true,
+    // }
   ]
 
 }
