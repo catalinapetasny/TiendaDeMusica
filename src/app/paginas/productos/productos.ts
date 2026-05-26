@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Producto } from '../../models/producto';
 import { RouterLink } from '@angular/router';
+import { Carrito } from '../../servicios/carrito';
 
 @Component({
   selector: 'app-productos',
@@ -8,7 +9,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './productos.html',
   styleUrl: './productos.css',
 })
+
 export class Productos {
+
+  constructor(
+    private carritoService: Carrito
+  ) {}
 
   Productos: Producto[] = [
     {
@@ -82,5 +88,9 @@ export class Productos {
     //   disponibilidad: true,
     // }
   ]
+
+  agregarACarrito(p: Producto) {
+    this.carritoService.agregarAcarrito(p)
+  }
 
 }

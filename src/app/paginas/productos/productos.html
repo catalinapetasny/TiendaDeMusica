@@ -9,7 +9,10 @@
                 <h5 class="card-title">{{ p.nombre }}</h5>
                 <p class="card-text">{{ p.descripcion }}</p>
                 <p class="card-text">{{ p.precio }}</p>
-                <a routerLink="../carrito" class="btn btn-primary">Agregar al carrito</a>
+                <!-- <a routerLink="../carrito" class="btn btn-primary">Agregar al carrito</a> -->
+                <button (click)="agregarAcarrito(p)" >
+                    Agregar al Carrito
+                </button>
             </div>
         </div>
         }
