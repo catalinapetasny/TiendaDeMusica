@@ -1,10 +1,131 @@
-.mensaje {
+/* .mensaje {
     color: white;
     display: flex;
     justify-content: center;
     margin: 1rem;
-}
+} */
 /* 
 .container {
     background-color: white;
 } */
+
+/*css de inicio moderno*/
+
+/* 1. Fondo de la pantalla y centrado absoluto */
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+    /* Negro oscuro de fondo general */
+    font-family: Arial, sans-serif;
+}
+
+/* 2. La "tarjeta" blanca del formulario */
+.contenedor-login {
+    background-color: #ffffff;
+    /* Fondo blanco para el formulario */
+    padding: 40px;
+    border-radius: 8px;
+    /* Bordes sutilmente redondeados */
+    width: 100%;
+    max-width: 360px;
+    /* Ancho máximo para que no se desarme en PC */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Sombra suave negra */
+}
+
+/* 3. El título principal */
+.titulo {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+    /* Negro casi puro */
+    font-size: 24px;
+    text-align: center;
+}
+
+/* 4. Separación entre los bloques de inputs */
+.grupo-input {
+    margin-bottom: 20px;
+}
+
+/* 5. Los textos de arriba de los inputs (Email / Contraseña) */
+.etiqueta {
+    display: block;
+    margin-bottom: 6px;
+    color: #000;
+    /* Negro */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 6. Las cajas donde el usuario escribe */
+.campo-texto {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    /* Borde gris claro */
+    border-radius: 4px;
+    background-color: #fafafa;
+    /* Fondo gris casi blanco */
+    color: #333333;
+    /* Texto interior gris oscuro */
+    font-size: 14px;
+    box-sizing: border-box;
+    /* Evita que el input se deforme con el padding */
+}
+
+/* Efecto cuando el usuario hace clic para escribir */
+.campo-texto:focus {
+    outline: none;
+    border-color: #1a1a1a;
+    /* El borde se vuelve negro al hacer clic */
+}
+
+/* 7. El botón de inicio de sesión */
+.boton-ingresar {
+    width: 100%;
+    padding: 12px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;    
+    margin-top: 10px;
+}
+/* Texto blanco */
+/* Botón negro */
+ /* Cambia el cursor a la manito */
+
+/* Efecto cuando pasas el mouse por encima del botón */
+.boton-ingresar:hover {
+    background-color: #333333;
+    /* Se vuelve un gris oscuro */
+}
+
+/* 8. El texto y enlace de abajo */
+.texto-registro {
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 0;
+}
+
+.enlace {
+    color: #666666;
+    /* Gris intermedio */
+    font-size: 13px;
+    text-decoration: none;
+    /* Le quita el subrayado por defecto */
+}
+
+/* Efecto cuando pasas el mouse por el enlace */
+.enlace:hover {
+    color: #000000;
+    /* Se vuelve negro */
+    text-decoration: underline;
+    /* Aparece el subrayado */
+}

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h1 class="mensaje">
         Iniciar Sesión
     </h1>
@@ -29,4 +29,33 @@
             </u>
         </a>
     </p>
+</div> -->
+
+
+<!-- inicio más mopderno -->
+
+<div class="contenedor-login">
+  
+  <h1 class="titulo">Iniciar Sesión</h1>
+
+  <form>
+    <div class="grupo-input">
+      <label for="email" class="etiqueta">Email</label>
+      <input type="text" id="email" class="campo-texto" required placeholder="Ingrese su email">
+    </div>
+
+    <div class="grupo-input">
+      <label for="contrasena" class="etiqueta">Contraseña</label>
+      <input type="password" id="contrasena" class="campo-texto" required placeholder="••••••••">
+    </div>
+
+    <button type="submit" class="boton-ingresar">
+      INICIAR SESIÓN
+    </button>
+  </form>
+
+  <p class="texto-registro">
+    <a routerLink="/registro" class="enlace">¿No tenés una cuenta? Registrate acá.</a>
+  </p>
+
 </div>

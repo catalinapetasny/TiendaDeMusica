@@ -1,6 +1,98 @@
-.titulo {
+/* .titulo {
     color: white;
     display: flex;
     justify-content: center;
     margin: 1rem;
+} */
+
+/* :host representa al contenedor principal invisible de este componente en Angular.
+   Lo usamos para centrar la tarjeta en el medio de la pantalla. */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;             /* Hace que ocupe el 100% del alto de la ventana del navegador */
+  background-color: #000000;
+  font-family: Arial, sans-serif;
+}
+
+.contenedor-login {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  width: 100%;               /* En pantallas chicas (celulares) ocupa todo el ancho disponible */
+  max-width: 360px;          /* En pantallas grandes (PC) no se estira más de 360 píxeles */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Crea una sombra negra sutil debajo de la tarjeta */
+}
+
+/* Estilos para el título "Crear cuenta" */
+.titulo {
+  margin-top: 0;             /* Quita el espacio extra que los navegadores ponen arriba por defecto */
+  margin-bottom: 24px;       /* Separa el título del primer input de abajo */
+  color: #1a1a1a;
+  font-size: 24px;
+  text-align: center;        /* Centra el texto del título */
+}
+
+/* Contenedor que agrupa a cada etiqueta con su respectivo input */
+.grupo-input {
+  margin-bottom: 20px;       /* Crea una separación de 20px entre un campo y el siguiente */
+}
+
+.etiqueta {
+  display: block;            /* Hace que se comporte como un bloque (obliga al input a ir abajo) */
+  margin-bottom: 6px;
+  color: #555555;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.campo-texto {
+  width: 100%;
+  padding: 10px 12px;        /* Espacio interno para que el texto que escribe el usuario no toque los bordes */
+  border: 1px solid #cccccc; 
+  border-radius: 4px;
+  background-color: #fafafa; /* Un fondo gris casi blanco para diferenciarlo del fondo de la tarjeta */
+  color: #333333;            /* Color del texto que escribe el usuario (gris oscuro) */
+  font-size: 14px;
+  box-sizing: border-box;    /* evita que el padding deforme o ensanche el input */
+}
+
+.campo-texto:focus {
+  outline: none;             /* Quita el borde azul o amarillo que los navegadores ponen por defecto */
+  border-color: #1a1a1a;
+}
+
+/* Estilos para el botón de "Registrarse" */
+.boton-ingresar {
+  width: 100%;
+  padding: 12px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.boton-ingresar:hover {
+  background-color: #333333;
+}
+.texto-registro {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+.enlace {
+  color: #666666;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.enlace:hover {
+  color: #1a1a1a;
+  text-decoration: underline;
 }
