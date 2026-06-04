@@ -1,0 +1,7 @@
+.title-favorite {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}

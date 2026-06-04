@@ -9,3 +9,18 @@
 .card {
     width: 18rem;
 }
+
+.btn-dark {
+    background-color: black;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 25px;
+    border: 2px solid black;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-dark:hover {
+    background-color: white; 
+    color: black;
+}
