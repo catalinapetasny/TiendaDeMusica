@@ -1,24 +1,49 @@
-<h1 class="title-favorite">
-    Productos agregados a favoritos
+<h1 class="title-favorite text-center my-4">
+    Productos favoritos :3
 </h1>
 
 <div class="container">
-    <table class="table">
+
+    <table class="table table-striped align-middle">
         <thead>
             <tr>
                 <th scope="col">Producto</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
+                <th scope="col" class="text-center">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <!-- @for (f of Favoritos; track f.id){
-            @if (f.disponibilidad) {
+            @for (p of favoritos; track p.id) {
+            @if (p.disponibilidad) {
+            <tr>
 
+                <td>
+                    <img [src]="p.imagen" [alt]="p.nombre" style="width: 50px; height: 50px; object-fit: cover;"
+                        class="rounded">
+                </td>
+                <td>
+                    <strong>{{ p.nombre }}</strong>
+                </td>
+                <td> {{ p.descripcion }} </td>
+                <td> {{ p.precio }} </td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-outline-danger" (click)="eliminarProductos(p)">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
             }
-            } -->
-            <td scope="col"></td>
+            } @empty {
+            <tr>
+                <td colspan="5" class="text-center text-muted py-4">
+                    No hay productos agregados a Favoritos :c
+                </td>
+            </tr>
+            }
         </tbody>
     </table>
 </div>
+
+<!--(click)="eliminarProductos(p.id)"-->

@@ -8,4 +8,3 @@ export interface Producto {
     categoria: string;
     disponibilidad: boolean;
 }
-

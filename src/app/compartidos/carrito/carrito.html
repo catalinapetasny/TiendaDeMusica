@@ -1,33 +1,71 @@
-<div class="container">
-  <h3>
-    <b>
-      Productos agregados al carrito
-    </b>
-  </h3> <br>
+<h1 class="title-favorite text-center my-4">
+  Productos agregados al carrito
+</h1>
 
-  <table class="table">
+<div class="container">
+  <table class="table table-striped align-middle">
     <thead>
       <tr>
-        <th scope="col">Producto</th>
+        <th scope="col">Imagen</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
         <th scope="col">Precio</th>
+        <th scope="col" style="width: 100px;">Cantidad</th>
+        <th scope="col">Subtotal</th>
+        <th scope="col" class="text-center">Acciones</th>
       </tr>
     </thead>
-    <tbody>
-      <!-- @for (p of Productos; track p.id){
-        <img src="{{ p.imagen }}" alt="">
-      } -->
 
-      <td scope="col">
-        <!-- <img src="{{ p.imagen }}" alt=""> -->
-      </td>
+    <tbody>
+      @for (i of Carrito; track i.id) {
+      <tr>
+        <td>
+          <img [src]="i.imagen" [alt]="i.nombre" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
+        </td>
+
+        <td><strong>{{ i.nombre }}</strong></td>
+
+        <td>${{ i.precio }}</td>
+
+        <td>
+          <div class="d-flex gap-2 align-items-center">
+            <button class="btn btn-sm btn-outline-danger" (click)="disminuir(i.id)">
+              -
+            </button>
+
+            <span>
+              {{ i.cantidad }}
+            </span>
+
+            <button class="btn btn-sm btn-outline-success" (click)="aumentar(i.id)">
+              +
+            </button>
+          </div>
+        </td>
+
+        <td>
+          ${{ i.precio * i.cantidad }}
+        </td>
+
+        <td class="text-center">
+          <button class="btn btn-sm btn-danger" (click)="eliminar(i.id)">
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+
+      </tr>
+      } @empty {
+
+      <tr>
+        <td colspan="6" class="text-center text-muted py-4">
+          No hay productos en el carrito :c
+        </td>
+      </tr>
+      }
     </tbody>
   </table>
 
   <div class="d-grid gap-2 d-md-flex justify-content-md-end botones">
-    <button class="btn btn-outline-danger me-md-2" type="button">Vaciar carrito</button>
-    <button class="btn btn-outline-success" type="button">Finalizar compra</button>
+    <button class="btn btn-outline-danger me-md-2" type="button" (click)="vaciar()">Vaciar carrito</button>
+    <button class="btn btn-outline-success" type="button" (click)="comprar()">Finalizar compra</button>
   </div>
-
 </div>
