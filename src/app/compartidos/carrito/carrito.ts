@@ -1,31 +1,5 @@
 // carrito.ts (COMPONENTE)
 
-// import { Component } from '@angular/core';
-// import { Producto } from '../../models/producto';
-// import { carritoService } from '../../servicios/carrito';
-
-// @Component({
-//   selector: 'app-carrito',
-//   imports: [],
-//   templateUrl: './carrito.html',
-//   styleUrl: './carrito.css',
-// })
-
-// export class Carrito {
-
-//   Carrito: Producto[] = [];
-
-//   constructor(
-//     private carritoService: carritoService
-//   ) {
-//     this.Carrito =
-//       this.carritoService.obtenerCarrito();
-//   }
-
-// }
-
-// carrito.ts
-
 import { Component, OnInit } from '@angular/core';
 import { carritoService } from '../../servicios/carrito';
 
@@ -40,14 +14,15 @@ import { carritoService } from '../../servicios/carrito';
 export class Carrito
   implements OnInit {
 
-  Carrito: any[] = [];
+  Carrito: any[] = [];   // Se usa any[] porque además de Producto tiene una propiedad extra llamada cantidad
 
   constructor(
-    private carritoService: carritoService
+    private carritoService: carritoService //Se usa private porque solo se necesita dentro de este componente
   ) { }
 
   // READ
 
+  //ngOnInit: Se usa para obtener los productos del carrito cuando se abre la página y mostrarlos.
   ngOnInit() {
     this.Carrito = this.carritoService.obtenerCarrito();
   }

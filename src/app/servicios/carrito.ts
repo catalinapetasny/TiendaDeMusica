@@ -23,7 +23,6 @@ export class carritoService {
     } else {
       this.Productos.push({ ...p, cantidad: 1 });
     }
-
     // ...p: Copia todos los datos del producto (nombre, precio, imagen, etc.) y le agrega cantidad = 1
   }
 
