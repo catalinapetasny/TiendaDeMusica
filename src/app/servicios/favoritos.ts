@@ -12,7 +12,9 @@ export class favoritosService {
   Favoritos: Producto[] = []
 
   agregarAFavoritos(p: Producto) {
-    const existe = this.Favoritos.find(prod => prod.id === p.id);
+    // Busca si el producto ya fue agregado
+    const existe = this.Favoritos.find(prod => prod.id === p.id); //find(): Busca un elemento dentro del array y devuelve el primero que coincida.
+    //si no existe lo agrega al arreglo
     if (!existe) {
       this.Favoritos.push(p);
     }
@@ -24,6 +26,7 @@ export class favoritosService {
 
   //Eliminar producto de favoritos
   eliminarProductos(p: Producto) {
+    //Crea un nuevo arreglo sin el producto seleccionado
     this.Favoritos = this.Favoritos.filter(
       prod => prod.id !== p.id
     );

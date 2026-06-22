@@ -14,18 +14,16 @@ import { favoritosService } from '../../servicios/favoritos';
 export class Favoritos {
 
   favoritos: Producto[] = [];
-
+  // el constructor conecta el componente con el servicio
   constructor(
     private favoritosService: favoritosService
   ) {
-    this.favoritos =
-      this.favoritosService.obtenerFavoritos();
+    this.favoritos = this.favoritosService.obtenerFavoritos();
   }
 
   eliminarProductos(p: Producto) {
-    this.favoritosService.eliminarProductos(p);
-
-    this.favoritos = this.favoritosService.obtenerFavoritos();
+    this.favoritosService.eliminarProductos(p); // Llama al servicio para eliminarlo
+    this.favoritos = this.favoritosService.obtenerFavoritos(); //Actualiza la lista mostrada
   }
 
 }

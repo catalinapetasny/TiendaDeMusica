@@ -1,21 +1,22 @@
 <div class="container">
+    <h1 class="title-prods">CD's y Vinilos</h1>
     <div class="row">
         @for (p of Productos; track p.id) {
         @if(p.disponibilidad) {
 
         <div class="card col-3 p-0 m-4">
-            <img src="{{ p.imagen }}" class="card-img-top" alt="">
+            <div class="imagen-wrapper">
+                <img src="{{ p.imagen }}" class="card-img-top" alt="">
+                <button (click)="agregarAfavoritos(p)" class="btn-favorito"><i class="bi bi-heart"></i></button>
+
+            </div>
             <div class="card-body">
                 <h5 class="card-title">{{ p.nombre }}</h5>
                 <p class="card-text">{{ p.descripcion }}</p>
                 <p class="card-text">{{ p.precio }}</p>
-                <button (click)="agregarACarrito(p)" class="btn btn-dark">
-                    Agregar al Carrito
-                </button>
 
-                <button (click)="agregarAfavoritos(p)" class="btn btn-dark btn-xs mt-1">
-                    <i class="bi bi-heart"></i>
-                </button>
+                <button (click)="agregarACarrito(p)" class="btn btn-dark">Agregar al Carrito</button>
+
             </div>
         </div>
         }

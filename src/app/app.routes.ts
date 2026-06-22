@@ -19,6 +19,6 @@ export const routes: Routes = [
     { path: 'registro', component: Registro },
     { path: 'carrito', component: Carrito },
     { path: 'inicio-sesion', component: InicioSesion },
-
+    // Ruta comodín: si el usuario escribe una URL inexistente, vuelve a Inicio
     { path: '**', redirectTo: 'inicio' }
 ];

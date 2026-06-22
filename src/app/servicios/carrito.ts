@@ -1,53 +1,3 @@
-//carrito.service
-// import { Injectable } from "@angular/core";
-// import { RouterLink } from "@angular/router";
-// import { Producto } from "../models/producto";
-
-// @Injectable({
-//   providedIn: "root",
-// // })
-
-// export class carritoService {
-//   Productos: Producto[] = []
-
-//   carrito.service.ts
-
-//   agregarAcarrito(p: Producto) {
-
-//     const existe =
-//       this.Productos.find(
-//         prod => prod.id === p.id
-//       );
-
-//     if (!existe) {
-//       this.Productos.push(p);
-//     }
-
-//   }
-
-//   obtenerCarrito() {
-//     return this.Productos
-//   }
-
-//   aumentarCantidad(id: number) {
-//     const prod = this.Productos.find(p => p.id === id);
-//     if (prod) {
-//       prod.cantidad++;
-//     }
-//   }
-
-//   disminuirCantidad(id: number) {
-//     const prod = this.Productos.find(p => p.id !== id);
-//     if (prod) {
-//       prod.cantidad--
-//     }
-//   }
-
-// eliminarProducto(id: number) {
-//   this.Productos = this.Productos.filter(p => p.id !== id);
-// }
-// }
-
 // carrito.service.ts
 
 import { Injectable } from "@angular/core";
@@ -59,6 +9,8 @@ import { Producto } from "../models/producto";
 
 export class carritoService {
 
+  // Array que guarda los productos del carrito.
+  // Usa Producto y además agrega cantidad
   Productos: (Producto & { cantidad: number })[] = [];
 
   // CREATE
@@ -71,18 +23,20 @@ export class carritoService {
     } else {
       this.Productos.push({ ...p, cantidad: 1 });
     }
+
+    // ...p: Copia todos los datos del producto (nombre, precio, imagen, etc.) y le agrega cantidad = 1
   }
 
   // READ
-
   obtenerCarrito() {
+    //Devuelve todos los productos
     return this.Productos;
   }
 
   // UPDATE
-
   aumentarCantidad(id: number) {
     const prod = this.Productos.find(p => p.id === id);
+    //si existe aumenta en 1
     if (prod) {
       prod.cantidad++;
     }
@@ -91,6 +45,7 @@ export class carritoService {
   disminuirCantidad(id: number) {
     const prod = this.Productos.find(p => p.id === id);
 
+    // Solo disminuye si hay más de 1 para evitar cantidad negativa
     if (prod && prod.cantidad > 1) {
       prod.cantidad--;
     }
@@ -98,15 +53,18 @@ export class carritoService {
   }
   // DELETE
   eliminarProducto(id: number) {
+     // Mantiene todos los productos excepto el seleccionado
     this.Productos = this.Productos.filter(p => p.id !== id);
   }
 
   vaciarCarrito() {
+    //Elimina todos los productos del carrito
     this.Productos = [];
   }
 
   // confirmar la compra
   finalizarCompra() {
+    // Simula compra realizada vaciando el carrito
     this.Productos = [];
   }
 

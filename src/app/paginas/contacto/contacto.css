@@ -1,0 +1,54 @@
+.contacto-container{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.titulo{
+    text-align: center;
+    font-size: 45px;
+    color: white;
+}
+
+.subtitulo{
+    text-align: center;
+    margin-bottom: 50px;
+    color: gray;
+}
+
+.formulario{
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.info-contacto{
+    border: none;
+    border-radius: 20px;
+    height: 100%;
+    background-color: black;
+    color: white;
+}
+
+.form-control{
+    border-radius: 12px;
+}
+
+.btn-dark{
+    width: 100%;
+}
+
+.redes{
+    display: flex;
+    gap: 25px;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.redes i{
+    cursor: pointer;
+    transition: .2s;
+}
+
+.redes i:hover{
+    transform: scale(1.1);
+}

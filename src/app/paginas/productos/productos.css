@@ -3,7 +3,11 @@
     justify-content: center; 
     flex-wrap: wrap; /* Permite que bajen si no entran */
     gap: 20px; /* Espacio entre cards */
-    padding: 20px;
+    padding: 70px;
+}
+
+.title-prods {
+    color: white;
 }
 
 .card {
@@ -23,4 +27,30 @@
 .btn-dark:hover {
     background-color: white; 
     color: black;
+}
+
+.imagen-wrapper{
+    position: relative;
+}
+
+.btn-favorito {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-favorito:hover{
+    transform: scale(1.08);
+    color: crimson;
 }

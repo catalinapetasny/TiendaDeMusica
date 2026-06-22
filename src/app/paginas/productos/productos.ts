@@ -22,7 +22,7 @@ export class Productos {
     {
       id: 1,
       nombre: "Three Cheers For Sweet Revenge.",
-      descripcion: "My Chemical Romance",
+      descripcion: "My Chemical Romance - CD Oficial",
       precio: 20000,
       stock: 30,
       imagen: "assets/revenge.png",
@@ -32,7 +32,7 @@ export class Productos {
     {
       id: 2,
       nombre: "The Black Parade.",
-      descripcion: "My Chemical Romance",
+      descripcion: "My Chemical Romance - CD Oficial",
       precio: 24000,
       stock: 30,
       imagen: "assets/tbp.jpg",
@@ -42,7 +42,7 @@ export class Productos {
     {
       id: 3,
       nombre: "American Idiot.",
-      descripcion: "Green Day",
+      descripcion: "Green Day - Vinilo Oficial",
       precio: 30000,
       stock: 15,
       imagen: "assets/american-idiot.jpg",
@@ -52,7 +52,7 @@ export class Productos {
     {
       id: 4,
       nombre: "Dookie",
-      descripcion: "Green Day",
+      descripcion: "Green Day - CD Oficial",
       precio: 35000,
       stock: 25,
       imagen: "assets/dookie.png",
@@ -62,7 +62,7 @@ export class Productos {
     {
       id: 5,
       nombre: "Meteora",
-      descripcion: "Linkin Park",
+      descripcion: "Linkin Park - Vinilo Oficial",
       precio: 20000,
       stock: 15,
       imagen: "assets/meteora.png",
@@ -72,23 +72,13 @@ export class Productos {
     {
       id: 6,
       nombre: "Hybrid Theory",
-      descripcion: "Linkin Park",
+      descripcion: "Linkin Park - Vinilo Oficial",
       precio: 30000,
       stock: 10,
       imagen: "assets/HT.jpg",
       categoria: "vinilo",
       disponibilidad: true,
-    },
-    // {
-    //   id: 7,
-    //   nombre: "Danger Days",
-    //   descripcion: "My Chemical Romance",
-    //   precio: 19000,
-    //   stock: 15,
-    //   imagen: "assets/danger-days.png",
-    //   categoria: "CD",
-    //   disponibilidad: true,
-    // }
+    }
   ]
 
   //Agrega un producto al carrito

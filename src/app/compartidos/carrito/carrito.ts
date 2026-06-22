@@ -30,17 +30,10 @@ import { Component, OnInit } from '@angular/core';
 import { carritoService } from '../../servicios/carrito';
 
 @Component({
-
-  selector:
-    'app-carrito',
-
+  selector: 'app-carrito',
   imports: [],
-
-  templateUrl:
-    './carrito.html',
-
-  styleUrl:
-    './carrito.css',
+  templateUrl: './carrito.html',
+  styleUrl: './carrito.css',
 
 })
 
@@ -50,10 +43,7 @@ export class Carrito
   Carrito: any[] = [];
 
   constructor(
-
-    private carritoService:
-      carritoService
-
+    private carritoService: carritoService
   ) { }
 
   // READ
@@ -63,11 +53,8 @@ export class Carrito
   }
 
   // UPDATE
-
   aumentar(id: number) {
-
     this.carritoService.aumentarCantidad(id);
-
   }
 
   disminuir(id: number) {
@@ -75,7 +62,6 @@ export class Carrito
   }
 
   // DELETE
-
   eliminar(id: number) {
     this.carritoService.eliminarProducto(id);
     this.Carrito = this.carritoService.obtenerCarrito();
@@ -94,6 +80,11 @@ export class Carrito
 
       alert("¡Compra confirmada! ⚞^. .^⚟\n\nEn unos momentos comenzaremos a preparar tu pedido.\n\n¡Gracias por confiar en Black Cat Music :3!")
     }
+  }
+
+  // Método para calcular el total acumulado
+  obtenerTotal(): number {
+    return this.Carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
   }
 
 }
