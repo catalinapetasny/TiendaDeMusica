@@ -50,10 +50,10 @@ export class Carrito
   comprar() {
     const confirmar = confirm("¿Confirmar compra?");
     if (confirmar) {
+      const total = this.obtenerTotal();
       this.carritoService.finalizarCompra();
       this.Carrito = this.carritoService.obtenerCarrito();
-
-      alert("¡Compra confirmada! ⚞^. .^⚟\n\nEn unos momentos comenzaremos a preparar tu pedido.\n\n¡Gracias por confiar en Black Cat Music :3!")
+      alert("¡Compra confirmada! ⚞^. .^⚟\n\nEn unos momentos comenzaremos a preparar tu pedido.\n\n¡Gracias por confiar en Black Cat Music :3! \n\nFactura: "+total);
     }
   }
 
