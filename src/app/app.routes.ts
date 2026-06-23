@@ -7,7 +7,6 @@ import { Registro } from './auth/registro/registro';
 import { Carrito } from './compartidos/carrito/carrito';
 import { InicioSesion } from './auth/inicio-sesion/inicio-sesion';
 
-
 export const routes: Routes = [
     { path: '', redirectTo: 'inicio', pathMatch: 'full'},
     

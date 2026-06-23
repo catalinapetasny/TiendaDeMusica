@@ -8,7 +8,6 @@ import { carritoService } from '../../servicios/carrito';
   imports: [],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css',
-
 })
 
 export class Carrito

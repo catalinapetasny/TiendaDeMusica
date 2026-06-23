@@ -22,11 +22,6 @@ export class favoritosService {
 
   //Eliminar producto de favoritos
   eliminarProductos(p: Producto) {
-    this.Favoritos = this.Favoritos.filter(
-      prod => prod.id !== p.id
-    );
+    this.Favoritos = this.Favoritos.filter(prod => prod.id !== p.id);
   }
-
-
 }
-

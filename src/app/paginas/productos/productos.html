@@ -8,15 +8,12 @@
             <div class="imagen-wrapper">
                 <img src="{{ p.imagen }}" class="card-img-top" alt="">
                 <button (click)="agregarAfavoritos(p)" class="btn-favorito"><i class="bi bi-heart"></i></button>
-
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ p.nombre }}</h5>
                 <p class="card-text">{{ p.descripcion }}</p>
                 <p class="card-text">{{ p.precio }}</p>
-
                 <button (click)="agregarACarrito(p)" class="btn btn-dark">Agregar al Carrito</button>
-
             </div>
         </div>
         }
