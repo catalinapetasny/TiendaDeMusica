@@ -26,3 +26,120 @@
     background-color: black;
 }
 
+/* --- Carrusel --- */
+#carouselMultiple .carousel-inner {
+  padding: 0 3rem;          /* deja lugar a las flechas */
+}
+
+#carouselMultiple .carousel-item img {
+  height: 300px;
+  object-fit: cover;
+}
+
+/* --- Tarjeta de producto --- */
+.card-producto {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.card-producto img {
+  display: block;
+  width: 100%;
+  transition: transform .3s ease;
+}
+
+/* Overlay con la info */
+.info-producto {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .78);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.info-producto h5 {
+  font-size: 1rem;
+  margin-bottom: .35rem;
+}
+
+.info-producto p {
+  font-size: .85rem;
+  margin-bottom: .25rem;
+}
+
+.info-producto .precio {
+  font-weight: 700;
+  color: #ffff;
+  margin-top: .5rem;
+}
+
+/* Al pasar el mouse */
+.card-producto:hover .info-producto {
+  opacity: 1;
+}
+
+.card-producto:hover img {
+  transform: scale(1.05);
+}
+
+.seccion-proximos {
+  padding: 3rem 2rem;
+}
+
+.encabezado-proximos {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* la píldora */
+.etiqueta-proximos {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #610000;
+  border: 1px solid #610000;
+  border-radius: 999px;
+  padding: .35rem 1rem;
+  margin-bottom: 1rem;
+}
+
+/* el título de la sección: más chico y con otra tipografía */
+.titulo-proximos {
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: .05em;
+  color: #fff;
+  margin: 0 0 .5rem;
+}
+
+/* línea fina decorativa */
+.titulo-proximos::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #610000;
+  margin: 1rem auto 0;
+}
+
+.bajada-proximos {
+  font-size: .9rem;
+  color: rgba(255, 255, 255, .6);
+  margin: 1rem 0 0;
+}
+
+.separador {
+    display: flex;
+    justify-content: center;
+}

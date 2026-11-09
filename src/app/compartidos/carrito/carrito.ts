@@ -1,5 +1,4 @@
 // carrito.ts (COMPONENTE)
-
 import { Component, OnInit } from '@angular/core';
 import { carritoService } from '../../servicios/carrito';
 
@@ -13,15 +12,14 @@ import { carritoService } from '../../servicios/carrito';
 export class Carrito
   implements OnInit {
 
-  Carrito: any[] = [];   // Se usa any[] porque además de Producto tiene una propiedad extra llamada cantidad
+  Carrito: any[] = [];
 
   constructor(
-    private carritoService: carritoService //Se usa private porque solo se necesita dentro de este componente
+    private carritoService: carritoService
   ) { }
 
   // READ
 
-  //ngOnInit: Se usa para obtener los productos del carrito cuando se abre la página y mostrarlos.
   ngOnInit() {
     this.Carrito = this.carritoService.obtenerCarrito();
   }
@@ -52,7 +50,7 @@ export class Carrito
       const total = this.obtenerTotal();
       this.carritoService.finalizarCompra();
       this.Carrito = this.carritoService.obtenerCarrito();
-      alert("¡Compra confirmada! ⚞^. .^⚟\n\nEn unos momentos comenzaremos a preparar tu pedido.\n\n¡Gracias por confiar en Black Cat Music :3! \n\nFactura: "+total);
+      alert("¡Compra confirmada! ⚞^. .^⚟\n\nEn unos momentos comenzaremos a preparar tu pedido.\n\n¡Gracias por confiar en Vamp's Music :3! \n\nFactura: "+total);
     }
   }
 
