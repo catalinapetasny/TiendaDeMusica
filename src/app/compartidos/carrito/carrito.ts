@@ -1,6 +1,7 @@
-// carrito.ts (COMPONENTE)
-import { Component, OnInit } from '@angular/core';
-import { carritoService } from '../../servicios/carrito';
+//carrito.ts (componente)
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { CarritoService } from '../../servicios/carrito';
 
 @Component({
   selector: 'app-carrito',
@@ -9,54 +10,61 @@ import { carritoService } from '../../servicios/carrito';
   styleUrl: './carrito.css',
 })
 
-export class Carrito
-  implements OnInit {
+export class Carrito implements OnInit {
 
-  Carrito: any[] = [];
+  items: any[] = [];
 
   constructor(
-    private carritoService: carritoService
-  ) { }
+  private carritoService: CarritoService,
+  private router: Router,
+  private cdr: ChangeDetectorRef
+) { }
 
-  // READ
-
-  ngOnInit() {
-    this.Carrito = this.carritoService.obtenerCarrito();
+  ngOnInit(): void {
+    this.cargarCarrito();
   }
 
-  // UPDATE
-  aumentar(id: number) {
-    this.carritoService.aumentarCantidad(id);
+  // cargarCarrito(): void {
+  //   this.carritoService.ver().subscribe(lista => (this.items = lista));
+  // }
+
+  cargarCarrito(): void {
+    this.carritoService.ver().subscribe({
+      next: (lista) => {
+        console.log("Productos recibidos:", lista);
+
+        this.items = lista;
+
+        console.log("Contenido de items:", this.items);
+
+        // Notifica a Angular que debe actualizar la vista.
+        this.cdr.markForCheck();
+      },
+      error: (error) => {
+        console.error("Error al cargar carrito:", error);
+      }
+    });
   }
 
-  disminuir(id: number) {
-    this.carritoService.disminuirCantidad(id);
+  total(): number {
+    return this.items.reduce((suma, i) => suma + Number(i.cantidad) * Number(i.precio_unitario), 0);
   }
 
-  // DELETE
-  eliminar(id: number) {
-    this.carritoService.eliminarProducto(id);
-    this.Carrito = this.carritoService.obtenerCarrito();
+  cambiarCantidad(item: any, cantidad: number): void {
+    if (cantidad < 1) return;
+    this.carritoService.actualizar(item.id_producto, cantidad)
+      .subscribe(() => this.cargarCarrito());
   }
 
-  vaciar() {
-    this.carritoService.vaciarCarrito();
-    this.Carrito = this.carritoService.obtenerCarrito();
+  quitar(idProducto: number): void {
+    this.carritoService.eliminar(idProducto).subscribe(() => this.cargarCarrito());
   }
 
-  comprar() {
-    const confirmar = confirm("¿Confirmar compra?");
-    if (confirmar) {
-      const total = this.obtenerTotal();
-      this.carritoService.finalizarCompra();
-      this.Carrito = this.carritoService.obtenerCarrito();
-      alert("¡Compra confirmada! ⚞^. .^⚟\n\nEn unos momentos comenzaremos a preparar tu pedido.\n\n¡Gracias por confiar en Vamp's Music :3! \n\nFactura: "+total);
-    }
+  vaciar(): void {
+    this.carritoService.vaciar().subscribe(() => this.cargarCarrito());
   }
 
-  // Método para calcular el total acumulado
-  obtenerTotal(): number {
-    return this.Carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+  finalizarCompra(): void {
+    this.router.navigate(['/paginas/compra']);
   }
-
 }

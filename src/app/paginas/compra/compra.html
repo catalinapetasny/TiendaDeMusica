@@ -1,0 +1,49 @@
+<main class="container py-4 checkout-page">
+  <header class="page-heading">
+    <span class="eyebrow">ÚLTIMO PASO</span>
+    <h1>🦇 Resumen de tu compra 🦇</h1>
+    <p>Chequeá tu pedido antes de confirmarlo.</p>
+  </header>
+
+  <section class="checkout-panel">
+    @if (cargandoCarrito) {
+      <p class="checkout-status" role="status"><i class="bi bi-arrow-repeat"></i> Cargando el carrito...</p>
+    } @else if (items.length === 0) {
+      @if (errorMensaje) {
+        <div class="alert alert-danger" role="alert">{{ errorMensaje }}</div>
+      } @else {
+        <div class="checkout-empty"><i class="bi bi-bag"></i><p class="text-muted">No hay productos en el carrito.</p></div>
+      }
+      <a class="btn btn-outline-secondary" routerLink="/carrito">Volver al carrito</a>
+    } @else {
+      @if (errorMensaje) {
+        <div class="alert alert-danger" role="alert">{{ errorMensaje }}</div>
+      }
+
+      <h2>Tu pedido</h2>
+      <ul class="list-group checkout-items">
+        @for (item of items; track item.id_producto) {
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ item.nombre }} × {{ item.cantidad }}</span>
+            <strong>${{ (+item.precio_unitario) * item.cantidad }}</strong>
+          </li>
+        }
+      </ul>
+
+      <div class="checkout-total"><span>Total</span><strong>${{ total() }}</strong></div>
+
+      @if (mensajeTicket) {
+        <div class="alert alert-warning" role="alert">{{ mensajeTicket }}</div>
+        <button type="button" class="btn btn-outline-primary me-2" [disabled]="procesando" (click)="reintentarTicket()">
+          {{ procesando ? "Generando ticket..." : "Reintentar ticket" }}
+        </button>
+      }
+
+      @if (compraRegistradaId === null) {
+        <button type="button" class="btn btn-success confirm-button" [disabled]="procesando" (click)="finalizar()">
+          {{ procesando ? "Procesando compra..." : "Confirmar compra" }}
+        </button>
+      }
+    }
+  </section>
+</main>

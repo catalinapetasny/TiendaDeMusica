@@ -1,54 +1,30 @@
-<h1 class="title-favorite text-center my-4">
-    Productos favoritos :3
-</h1>
+<main class="favorites-page">
+  <header class="page-heading">
+    <span class="eyebrow">TU COLECCIÓN PERSONAL</span>
+    <h1 class="title-favorite">Productos favoritos :3</h1>
+    <p>Los discos que querés tener siempre a mano.</p>
+  </header>
 
-<div class="container" style="display: flex;">
-
-    <table class="table table-striped align-middle">
-        <thead>
-            <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-                <th scope="col" class="text-center">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (p of favoritos; track p.id) {
-            @if (p.disponibilidad) {
-            <tr>
-
-                <td>
-                    <img [src]="p.imagen" [alt]="p.nombre" style="width: 50px; height: 50px; object-fit: cover;">
-                </td>
-                <td>
-                    <strong>{{ p.nombre }}</strong>
-                </td>
-                <td> {{ p.descripcion }} </td>
-                <td> {{ p.precio }} </td>
-                
-                <td class="text-center">
-
-                    <button class="btn btn-sm btn-outline-success me-2" (click)="agregarAlCarrito(p)">
-                        Agregar al carrito
-                    </button>
-
-                    <button class="btn btn-sm btn-outline-danger" (click)="eliminarProductos(p)">
-                        Eliminar
-                    </button>
-                </td>
-            </tr>
-            }
-            } @empty {
-            <tr>
-                <td colspan="5" class="text-center text-muted py-4">
-                    No hay productos agregados a Favoritos :c
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
-</div>
-
-<!--(click)="eliminarProductos(p.id)"-->
+  <div class="container favorites-container">
+    <div class="favorites-list">
+      @for (f of favoritos; track f.id) {
+        <article class="fav favorite-card">
+          <div class="favorite-icon"><i class="bi bi-heart-fill"></i></div>
+          <div class="favorite-info">
+            <h2>{{ f.nombre }}</h2>
+            <p>${{ f.precio }}</p>
+          </div>
+          <button class="btn btn-sm btn-outline-danger" (click)="quitar(f.id_producto)">
+            <i class="bi bi-trash3"></i> Eliminar
+          </button>
+        </article>
+      } @empty {
+        <div class="favorites-empty">
+          <i class="bi bi-heart"></i>
+          <h2>Tu lista está esperando música</h2>
+          <p>No hay productos agregados a Favoritos :c</p>
+        </div>
+      }
+    </div>
+  </div>
+</main>

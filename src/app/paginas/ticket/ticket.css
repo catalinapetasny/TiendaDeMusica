@@ -1,0 +1,78 @@
+ :host {
+     display: block;
+     min-height: 60vh;
+ }
+
+ .ticket-page {
+     display: grid;
+     place-items: center;
+     max-width: 900px;
+     min-height: 55vh;
+     padding-top: 50px !important;
+     padding-bottom: 75px !important;
+ }
+
+ .ticket-panel {
+     width: min(100%, 620px);
+     padding: clamp(28px, 5vw, 48px);
+     text-align: center;
+     border: 1px solid #4a303d;
+     border-radius: 20px;
+     background: radial-gradient(circle at 50% 0%, #3a1c29, transparent 48%), #1a171d;
+     box-shadow: 0 22px 60px #0004;
+     color: #eee;
+ }
+
+ .ticket-mark {
+     display: grid;
+     place-items: center;
+     width: 65px;
+     height: 65px;
+     margin: 0 auto 19px;
+     border-radius: 18px;
+     color: #f08ba1;
+     background: #3b202c;
+     font-size: 1.8rem;
+ }
+
+ .eyebrow {
+     color: #d8758c;
+     font-size: .7rem;
+     font-weight: 800;
+     letter-spacing: .2em;
+ }
+
+ .ticket-panel h1 {
+     margin: 13px 0 8px;
+     color: #fff;
+     font-size: clamp(1.8rem, 4vw, 2.5rem);
+     font-weight: 800;
+ }
+
+ .ticket-date {
+     margin: 0 0 25px;
+     color: #b9adb5;
+ }
+
+ .ticket-status {
+     margin: 25px 0 0;
+     color: #d5c8d0;
+ }
+
+ .ticket-download {
+     padding: 12px 20px;
+     color: #fff;
+     background: #96304d;
+     border-color: #b74865;
+     border-radius: 9px;
+     font-weight: 750;
+ }
+
+ .ticket-download:hover {
+     background: #b43d5d;
+     border-color: #d15b78;
+ }
+
+ .ticket-panel .alert {
+     text-align: left;
+ }

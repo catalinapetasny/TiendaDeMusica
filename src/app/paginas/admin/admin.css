@@ -1,0 +1,253 @@
+/* ========================================
+   PANEL DE ADMINISTRACIÓN
+   Estética oscura - Tienda de música
+======================================== */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 40px;
+  background: #101014;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   TÍTULOS DE SECCIÓN
+======================================== */
+
+h2 {
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 45px 0 22px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #8b1e35;
+  letter-spacing: 0.5px;
+}
+
+h2:first-of-type {
+  margin-top: 0;
+}
+
+/* ========================================
+   FORMULARIO DE PRODUCTOS
+======================================== */
+
+input:not([type="file"]) {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  padding: 13px 16px;
+  margin-bottom: 14px;
+  background: #1c1c24;
+  border: 1px solid #393943;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+  color: #92929e;
+}
+
+input:focus {
+  outline: none;
+  border-color: #b52c4a;
+  box-shadow: 0 0 0 3px rgba(181, 44, 74, 0.18);
+}
+
+/* ========================================
+   SELECTOR DE IMAGEN
+======================================== */
+
+input[type="file"] {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  padding: 12px;
+  margin: 18px 0 10px;
+  background: #1c1c24;
+  border: 1px dashed #555563;
+  border-radius: 8px;
+  color: #d5d5dc;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+input[type="file"]:hover {
+  border-color: #b52c4a;
+  background: #24212a;
+}
+
+input[type="file"]:focus-visible {
+  outline: 2px solid #d94b68;
+  outline-offset: 3px;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 9px 14px;
+  margin-right: 12px;
+  background: #8b1e35;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #b52c4a;
+}
+
+/* ========================================
+   INFORMACIÓN DE IMAGEN
+======================================== */
+
+small {
+  display: block;
+  max-width: 550px;
+  margin: 10px 0 18px;
+  padding: 11px 14px;
+  background: #1c1c24;
+  border-left: 3px solid #b52c4a;
+  border-radius: 4px;
+  color: #c7c7d0;
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   BOTONES
+======================================== */
+
+button {
+  padding: 11px 19px;
+  margin: 8px 8px 8px 0;
+  background: #8b1e35;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  background: #b52c4a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(181, 44, 74, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus-visible {
+  outline: 2px solid #f08098;
+  outline-offset: 3px;
+}
+
+/* ========================================
+   LISTA DE PRODUCTOS
+======================================== */
+
+div {
+  max-width: 850px;
+  margin: 12px 0;
+  padding: 16px 20px;
+  background: #1c1c24;
+  border: 1px solid #30303a;
+  border-radius: 9px;
+  color: #e6e6eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+div:hover {
+  border-color: #713044;
+  background: #22222b;
+}
+
+/* ========================================
+   LISTAS DE USUARIOS Y VENTAS
+======================================== */
+
+p {
+  max-width: 850px;
+  margin: 12px 0;
+  padding: 16px 20px;
+  background: #1c1c24;
+  border: 1px solid #30303a;
+  border-left: 3px solid #8b1e35;
+  border-radius: 8px;
+  color: #d8d8df;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+p:hover {
+  border-color: #b52c4a;
+  background: #22222b;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  :host {
+    padding: 25px 18px;
+  }
+
+  h2 {
+    font-size: 22px;
+    margin-top: 35px;
+  }
+
+  input:not([type="file"]),
+  input[type="file"] {
+    max-width: 100%;
+  }
+
+  div {
+    padding: 14px;
+  }
+
+  button {
+    padding: 10px 15px;
+  }
+
+  p {
+    padding: 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  :host {
+    padding: 20px 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    margin: 5px 5px 5px 0;
+  }
+}

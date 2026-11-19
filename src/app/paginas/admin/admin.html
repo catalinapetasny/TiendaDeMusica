@@ -1,0 +1,36 @@
+<h2>Productos</h2>
+
+<!-- Formulario: cada campo está conectado a una propiedad de "form" -->
+<input [(ngModel)]="form.nombre" placeholder="Nombre">
+<input [(ngModel)]="form.descripcion" placeholder="Descripción">
+<input [(ngModel)]="form.precio" type="number" placeholder="Precio">
+
+<!-- Selector de archivo: al elegir uno se ejecuta alElegirArchivo() -->
+<input type="file" accept="image/*" (change)="alElegirArchivo($event)">
+
+@if (form.imagen) {
+    <small>Imagen actual: {{ form.imagen }}</small>
+}
+
+<button (click)="guardar()">Guardar</button>
+<!-- Lista de productos con botones para editar y eliminar -->
+
+@for (p of productos; track p.id) {
+    <div>
+        {{ p.nombre }} — ${{ p.precio }}
+        <button (click)="editar(p)">Editar</button>
+        <button (click)="eliminar(p.id)">Eliminar</button>
+    </div>
+}
+
+<h2>Usuarios</h2>
+
+@for (u of usuarios; track u.id) {
+    <p>{{ u.nombre }} — {{ u.email }} ({{ u.rol }})</p>
+}
+
+<h2>Ventas</h2>
+
+@for (v of ventas; track v.id_compra) {
+    <p>#{{ v.id_compra }} — {{ v.nombre }} — ${{ v.total }} — {{ v.fecha }}</p>
+}

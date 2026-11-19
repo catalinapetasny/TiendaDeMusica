@@ -1,27 +1,36 @@
-//favoritos.service
+
 import { Injectable } from "@angular/core";
-import { Producto } from "../models/producto";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root",
+  providedIn: "root"
 })
 
-export class favoritosService {
-  Favoritos: Producto[] = []
+export class FavoritosService {
 
-  agregarAFavoritos(p: Producto) {
-    const existe = this.Favoritos.find(prod => prod.id === p.id); 
-      if (!existe) {
-      this.Favoritos.push(p);
-    }
+  private apiUrl = "http://localhost/api_proyecto/public/favoritos";
+
+  constructor(private http: HttpClient) {}
+
+  // Obtiene los favoritos del usuario.
+  listar(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 
-  obtenerFavoritos() {
-    return this.Favoritos;
+  // Agrega un producto a favoritos.
+  agregar(idProducto: number): Observable<any> {
+    return this.http.post(
+      `${this.apiUrl}/agregar`,
+      { id_producto: idProducto }
+    );
   }
 
-  //Eliminar producto de favoritos
-  eliminarProductos(p: Producto) {
-    this.Favoritos = this.Favoritos.filter(prod => prod.id !== p.id);
+  // Elimina un producto de favoritos.
+  eliminar(idProducto: number): Observable<any> {
+    return this.http.delete(
+      `${this.apiUrl}/eliminar/${idProducto}`
+    );
   }
+
 }

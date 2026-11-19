@@ -1,79 +1,65 @@
-<h1 class="title-favorite text-center my-4">
-  Productos agregados al carrito
-</h1>
+<main class="cart-page">
+  <header class="page-heading">
+    <span class="eyebrow">TU SELECCIÓN</span>
+    <h1 class="title-favorite">Productos agregados al carrito</h1>
+    <p>Revisá tus discos antes de finalizar la compra.</p>
+  </header>
 
-<div class="container">
-  <table class="table table-striped align-middle">
-    <thead>
-      <tr>
-        <th scope="col">Imagen</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Precio</th>
-        <th scope="col" style="width: 100px;">Cantidad</th>
-        <th scope="col">Subtotal</th>
-        <th scope="col" class="text-center">Acciones</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @for (i of Carrito; track i.id) {
-      <tr>
-        <td>
-          <img [src]="i.imagen" [alt]="i.nombre" class="rounded" style="width: 50px; height: 50px; object-fit: cover;">
-        </td>
-
-        <td><strong>{{ i.nombre }}</strong></td>
-
-        <td>${{ i.precio }}</td>
-
-        <td>
-          <div class="d-flex gap-2 align-items-center">
-            <button class="btn btn-sm btn-outline-danger" (click)="disminuir(i.id)">
-              -
-            </button>
-
-            <span>
-              {{ i.cantidad }}
-            </span>
-
-            <button class="btn btn-sm btn-outline-success" (click)="aumentar(i.id)">
-              +
-            </button>
-          </div>
-        </td>
-
-        <td>
-          ${{ i.precio * i.cantidad }}
-        </td>
-
-        <td class="text-center">
-          <button class="btn btn-sm btn-danger" (click)="eliminar(i.id)">
-            <i class="bi bi-trash3"></i>
-          </button>
-        </td>
-
-      </tr>
-      } @empty {
-      <tr>
-        <td colspan="6" class="text-center text-muted py-4">
-          No hay productos en el carrito :c
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table>
-
-  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 botones">
-
-    <div class="total-carrito">
-      <h4 class="m-0">Total: <strong>${{ obtenerTotal() }}</strong></h4>
+  <div class="container cart-container">
+    <div class="cart-table-wrap">
+      <table class="table table-striped align-middle cart-table">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (i of items; track i.id_producto) {
+          <tr>
+            <td>
+              <img [src]="'http://localhost/imagenes/' + i.imagen" [alt]="i.nombre"
+                style="width: 50px; height: 50px; object-fit: cover">
+            </td>
+            <td><strong>{{ i.nombre }}</strong></td>
+            <td>${{ i.precio_unitario }}</td>
+            <td>
+              <div class="quantity-control">
+                <button class="btn btn-sm btn-outline-danger" (click)="cambiarCantidad(i, i.cantidad - 1)"
+                  aria-label="Disminuir cantidad">−</button>
+                <span>{{ i.cantidad }}</span>
+                <button class="btn btn-sm btn-outline-success" (click)="cambiarCantidad(i, i.cantidad + 1)"
+                  aria-label="Aumentar cantidad">+</button>
+              </div>
+            </td>
+            <td class="subtotal-cell">${{ (+i.precio_unitario) * (+i.cantidad) }}</td>
+            <td><button class="btn btn-sm btn-danger remove-button" (click)="quitar(i.id_producto)">Quitar</button></td>
+          </tr>
+          } @empty {
+          <tr>
+            <td colspan="6" class="text-center text-muted py-4 cart-empty">
+              <i class="bi bi-bag-x"></i>
+              <strong> No hay productos en el carrito :c</strong>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
     </div>
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-outline-danger me-md-2" type="button" (click)="vaciar()">Vaciar carrito</button>
-      <button class="btn btn-outline-success" type="button" (click)="comprar()">Finalizar compra</button>
-    </div>
-
+    <section class="cart-summary">
+      <div>
+        <span class="summary-label">Total de tu pedido</span>
+        <h2>Total: ${{ total() }}</h2>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-outline-danger me-2" (click)="vaciar()">Vaciar carrito</button>
+        <button class="btn btn-outline-success" (click)="finalizarCompra()">Finalizar compra</button>
+      </div>
+    </section>
   </div>
-
-</div>
+</main>

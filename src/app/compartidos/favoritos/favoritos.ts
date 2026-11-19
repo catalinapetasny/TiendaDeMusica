@@ -1,38 +1,7 @@
-// favoritos.ts (COMPONENTE)
-
-// import { Component } from '@angular/core';
-// import { Producto } from '../../models/producto';
-// import { favoritosService } from '../../servicios/favoritos';
-
-// @Component({
-//   selector: 'app-favoritos',
-//   imports: [],
-//   templateUrl: './favoritos.html',
-//   styleUrl: './favoritos.css',
-// })
-
-//export class Favoritos {
-
-  //favoritos: Producto[] = [];
-  // el constructor conecta el componente con el servicio
-  //constructor(
-    //private favoritosService: favoritosService
-  //) {
-    //this.favoritos = this.favoritosService.obtenerFavoritos();
-  //}
-
-  //eliminarProductos(p: Producto) {
-    //this.favoritosService.eliminarProductos(p);  Llama al servicio para eliminarlo
-    //this.favoritos = this.favoritosService.obtenerFavoritos(); Actualiza la lista mostrada
-  //}
-
-//}
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../models/producto';
-import { favoritosService } from '../../servicios/favoritos';
-
-// 👇 AGREGAR: import del servicio del carrito (ajustá la ruta si tu carpeta se llama distinto)
-import { carritoService } from '../../servicios/carrito';
+import { FavoritosService } from '../../servicios/favoritos';
+import { CarritoService } from '../../servicios/carrito';
 
 @Component({
   selector: 'app-favoritos',
@@ -40,27 +9,40 @@ import { carritoService } from '../../servicios/carrito';
   templateUrl: './favoritos.html',
   styleUrl: './favoritos.css',
 })
-export class Favoritos {
 
-  favoritos: Producto[] = [];
+export class Favoritos implements OnInit {
+
+  favoritos: any[] = [];
 
   constructor(
-    private favoritosService: favoritosService,
-    // 👇 AGREGAR: inyección del servicio del carrito, al lado del de favoritos
-    private carritoService: carritoService
-  ) {
-    this.favoritos = this.favoritosService.obtenerFavoritos();
+    private favoritosService: FavoritosService,
+    private carritoService: CarritoService
+  ) { }
+
+  // Al iniciar, carga los favoritos del usuario.
+  ngOnInit(): void {
+    this.cargar();
   }
 
-  eliminarProductos(p: Producto) {
-    this.favoritosService.eliminarProductos(p);
-    this.favoritos = this.favoritosService.obtenerFavoritos();
+  // Obtiene los favoritos desde la API.
+  cargar(): void {
+    this.favoritosService.listar().subscribe(lista => (this.favoritos = lista));
   }
 
-  agregarAlCarrito(p: Producto) {
-    this.carritoService.agregarAcarrito(p);
-    this.favoritosService.eliminarProductos(p);
-    this.favoritos = this.favoritosService.obtenerFavoritos();
+  quitar(idProducto: number): void {
+    this.favoritosService.eliminar(idProducto).subscribe(() => this.cargar());
   }
 
+  // Agrega un producto al carrito y lo quita de favoritos.
+  agregarAlCarrito(p: Producto): void {
+    this.carritoService.agregar(p.id, 1).subscribe({
+      next: () => {
+        this.favoritosService.eliminar(p.id).subscribe({
+          next: () => this.cargar(),
+          error: (error) => console.error("Error al quitar favorito:", error)
+        });
+      },
+      error: (error) => console.error("Error al agregar al carrito:", error)
+    });
+  }
 }

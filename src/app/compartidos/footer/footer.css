@@ -1,48 +1,86 @@
-footer {
-    background-color: white;
-    color: #000;
-    padding: 40px 20px;
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-top: 3px solid white;
-}
+ :host {
+     display: block;
+     margin-top: auto;
+ }
 
-footer h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: black;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+ .footer {
+     background: #0c0b0e;
+     color: #d8d1d5;
+     padding: 38px clamp(18px, 5vw, 76px) 18px;
+     border-top: 1px solid #3d202b;
+ }
 
-.footer-links {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
-}
+ .footer-main {
+     max-width: 1280px;
+     margin: 0 auto 28px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 30px;
+     flex-wrap: wrap;
+ }
 
-.footer-links a {
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
+ .footer-brand {
+     max-width: 420px;
+ }
 
-/* Texto final */
-.footer-copy {
-    font-size: 0.9rem;
-    color: #000;
-    border-top: 1px solid #0000;
-    padding-top: 1rem;
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-}
+ .footer-brand h2 {
+     display: inline-block;
+     margin: 0 0 8px 9px;
+     color: #fff;
+     font-size: 1.45rem;
+     letter-spacing: .03em;
+ }
+
+ .footer-bat {
+     color: #d34b68;
+     font-size: 1.4rem;
+ }
+
+ .footer-brand p {
+     margin: 0;
+     color: #a9a0a6;
+     font-size: .9rem;
+ }
+
+ .footer-links {
+     display: flex;
+     gap: 22px;
+     flex-wrap: wrap;
+ }
+
+ .footer-links a {
+     color: #c9c0c6;
+     text-decoration: none;
+     font-size: .9rem;
+     transition: color .2s;
+ }
+
+ .footer-links a:hover,
+ .footer-links a:focus-visible {
+     color: #f07891;
+     text-decoration: underline;
+     text-underline-offset: 4px;
+ }
+
+ .footer-copy {
+     max-width: 1280px;
+     margin: auto;
+     padding-top: 17px;
+     border-top: 1px solid #292329;
+     color: #827980;
+     text-align: center;
+     font-size: .78rem;
+ }
+
+ @media(max-width:600px) {
+     .footer-main {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 20px;
+     }
+
+     .footer-links {
+         gap: 14px 20px;
+     }
+ }

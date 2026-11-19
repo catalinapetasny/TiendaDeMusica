@@ -1,0 +1,153 @@
+ :host {
+     display: block;
+     min-height: 60vh;
+ }
+
+ .purchase-history-page {
+     max-width: 1050px;
+     padding-top: 48px !important;
+     padding-bottom: 80px !important;
+     color: #eee9ed;
+ }
+
+ .page-heading {
+     text-align: center;
+     margin-bottom: 32px;
+ }
+
+ .eyebrow {
+     color: #d8758c;
+     font-size: .7rem;
+     font-weight: 800;
+     letter-spacing: .2em;
+ }
+
+ .page-heading h1 {
+     margin: 10px 0;
+     color: #fff;
+     font-size: clamp(1.9rem, 4vw, 2.7rem);
+     font-weight: 800;
+ }
+
+ .page-heading p {
+     color: #aaa0a7;
+ }
+
+ .history-panel {
+     padding: clamp(18px, 3vw, 30px);
+     border: 1px solid #42313e;
+     border-radius: 17px;
+     background: #19171c;
+     box-shadow: 0 18px 48px #0003;
+ }
+
+ .history-list {
+     gap: 11px;
+ }
+
+ .history-item {
+     display: flex;
+     align-items: center;
+     gap: 15px;
+     padding: 18px;
+     color: #eee;
+     background: #211d23;
+     border: 1px solid #3e333d !important;
+     border-radius: 11px !important;
+ }
+
+ .history-order-icon {
+     display: grid;
+     place-items: center;
+     flex: 0 0 43px;
+     height: 43px;
+     border-radius: 12px;
+     color: #e67b94;
+     background: #3b202c;
+     font-size: 1.1rem;
+ }
+
+ .history-order-info {
+     flex: 1;
+     min-width: 0;
+ }
+
+ .history-order-info h2 {
+     margin: 0 0 5px;
+     color: #fff;
+     font-weight: 700;
+ }
+
+ .history-order-info p {
+     color: #a99da6 !important;
+     font-size: .85rem;
+ }
+
+ .history-order-actions {
+     display: flex;
+     align-items: center;
+     gap: 18px;
+     flex-wrap: wrap;
+ }
+
+ .history-order-actions strong {
+     color: #f08ba1;
+ }
+
+ .history-order-actions .btn {
+     color: #e8b6c3;
+     border-color: #8b4058;
+     border-radius: 8px;
+ }
+
+ .history-order-actions .btn:hover {
+     color: #fff;
+     background: #713047;
+ }
+
+ .history-status {
+     padding: 28px;
+     text-align: center;
+     color: #c9bdc5;
+ }
+
+ .history-empty {
+     padding: 35px 15px;
+     text-align: center;
+ }
+
+ .history-empty>i {
+     color: #c85b76;
+     font-size: 2.5rem;
+ }
+
+ .history-empty h2 {
+     margin: 13px 0 7px;
+     color: #fff;
+     font-size: 1.3rem;
+ }
+
+ .history-empty p {
+     color: #aaa0a7 !important;
+ }
+
+ .history-empty .btn {
+     color: #e9bdc8;
+     border-color: #854257;
+ }
+
+ @media(max-width:650px) {
+     .purchase-history-page {
+         padding-top: 30px !important;
+     }
+
+     .history-item {
+         flex-wrap: wrap;
+     }
+
+     .history-order-actions {
+         width: 100%;
+         justify-content: space-between;
+         padding-left: 58px;
+     }
+ }

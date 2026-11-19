@@ -1,30 +1,32 @@
-<div class="contenedor-login">
-  
-  <h1 class="titulo">Crear cuenta</h1>
+<main class="auth-container">
+  <section class="contenedor-login">
+    <div class="auth-symbol">🦇</div>
+    <span class="auth-kicker">SUMATE A LA COMUNIDAD</span>
+    <h1 class="titulo">Crear cuenta</h1>
+    <p class="auth-intro">Creá tu cuenta para disfrutar de Vamp's Music.</p>
 
-  <form>
-    <div class="grupo-input">
-      <label for="email" class="etiqueta">Email</label>
-      <input type="email" id="email" class="campo-texto" required placeholder="Ingrese su email">
-    </div>
+    <form>
+      <div class="grupo-input">
+        <label for="nombre" class="etiqueta">Nombre y Apellido</label>
+        <input [(ngModel)]="nombre" name="nombre" class="campo-texto" required placeholder="Nombre completo" type="text">
+      </div>
+      <div class="grupo-input">
+        <label for="email" class="etiqueta">Ingrese su Email</label>
+        <input [(ngModel)]="email" name="email" class="campo-texto" required placeholder="correo@gmail" type="email">
+      </div>
+      <div class="grupo-input">
+        <label for="contrasena" class="etiqueta">Crea una contraseña</label>
+        <input [(ngModel)]="contrasena" name="contrasena" class="campo-texto" required placeholder="Contraseña" type="password">
+      </div>
+      <button type="submit" (click)="registrar()" class="boton-ingresar">Registrarse</button>
+    </form>
 
-    <div class="grupo-input">
-      <label for="contrasena" class="etiqueta">Crea una contraseña</label>
-      <input type="password" id="contrasena" class="campo-texto" required placeholder="••••••••">
-    </div>
-    
-    <div class="grupo-input">
-      <label for="repetir-contrasena" class="etiqueta">Repita la contraseña</label>
-      <input type="password" id="repetir-contrasena" class="campo-texto" required placeholder="••••••••">
-    </div>
+    <p class="texto-registro">
+      <a routerLink="/inicio-sesion" class="enlace">¿Ya tenés cuenta? Inicia sesión acá.</a>
+    </p>
 
-    <button type="submit" class="boton-ingresar">
-      REGISTRARSE
-    </button>
-  </form>
-
-  <p class="texto-registro">
-    <a routerLink="/inicio-sesion" class="enlace">¿Ya tenés cuenta? Inicia sesión acá.</a>
-  </p>
-
-</div>
+    @if (error) {
+      <p class="error" role="alert">{{ error }}</p>
+    }
+  </section>
+</main>

@@ -1,0 +1,17 @@
+<main class="container py-4 ticket-page">
+  <section class="ticket-panel">
+    <div class="ticket-mark"><i class="bi bi-receipt-cutoff"></i></div>
+    <span class="eyebrow">VAMP'S MUSIC · COMPROBANTE</span>
+    @if (cargando) {
+    <p class="ticket-status" role="status">Cargando ticket...</p>
+    } @else if (errorMensaje) {
+    <div class="alert alert-danger" role="alert">{{ errorMensaje }}</div>
+    } @else if (ticket) {
+    <h1>Ticket {{ ticket.numero_ticket }}</h1>
+    <p class="ticket-date">Fecha: {{ ticket.fecha }}</p>
+    <a class="btn btn-primary ticket-download" [href]="urlPdf" target="_blank" rel="noopener">
+      <i class="bi bi-file-earmark-pdf"></i> Descargar PDF
+    </a>
+    }
+  </section>
+</main>

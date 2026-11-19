@@ -1,59 +1,47 @@
+// src/app/servicios/carrito.ts
 import { Injectable } from "@angular/core";
-import { Producto } from "../models/producto";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
-export class carritoService {
 
-  // Array que guarda los productos del carrito.
-  // Usa Producto y además agrega cantidad
-  Productos: (Producto & { cantidad: number })[] = [];
+export class CarritoService {
 
-  // CREATE
-  // 👇 ESTE es el método que llama el componente de favoritos
-  agregarAcarrito(p: Producto) {
+  private apiUrl = "http://localhost/api_proyecto/public/carrito";
 
-    const existe = this.Productos.find(prod => prod.id === p.id);
+  constructor(private http: HttpClient) {}
 
-    if (existe) {
-      existe.cantidad++;
-    } else {
-      this.Productos.push({ ...p, cantidad: 1 });
-    }
+  // Obtiene los productos del carrito.
+  ver(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 
-  // READ
-  obtenerCarrito() {
-    return this.Productos;
+  // Agrega un producto al carrito.
+  agregar(idProducto: number, cantidad: number): Observable<any> {
+    return this.http.post(
+      `${this.apiUrl}/agregar`,
+      { id_producto: idProducto, cantidad: cantidad }
+    );
   }
 
-  // UPDATE
-  aumentarCantidad(id: number) {
-    const prod = this.Productos.find(p => p.id === id);
-    if (prod) {
-      prod.cantidad++;
-    }
+  // Actualiza la cantidad de un producto.
+  actualizar(idProducto: number, cantidad: number): Observable<any> {
+    return this.http.put(
+      `${this.apiUrl}/actualizar/${idProducto}`,
+      { cantidad: cantidad }
+    );
   }
 
-  disminuirCantidad(id: number) {
-    const prod = this.Productos.find(p => p.id === id);
-    if (prod && prod.cantidad > 1) {
-      prod.cantidad--;
-    }
+  // Elimina un producto del carrito.
+  eliminar(idProducto: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/eliminar/${idProducto}`);
   }
 
-  // DELETE
-  eliminarProducto(id: number) {
-    this.Productos = this.Productos.filter(p => p.id !== id);
-  }
-
-  vaciarCarrito() {
-    this.Productos = [];
-  }
-
-  finalizarCompra() {
-    this.Productos = [];
+  // Vacía completamente el carrito.
+  vaciar(): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/vaciar`);
   }
 
 }

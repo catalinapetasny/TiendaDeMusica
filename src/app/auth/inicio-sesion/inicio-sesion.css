@@ -1,131 +1,172 @@
-/* .mensaje {
-    color: white;
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
-} */
-/* 
-.container {
-    background-color: white;
-} */
-
-/*css de inicio moderno*/
-
-/* 1. Fondo de la pantalla y centrado absoluto */
 :host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #000000;
-    /* Negro oscuro de fondo general */
-    font-family: Arial, sans-serif;
+    display: block;
+    min-height: calc(100vh - 150px);
 }
 
-/* 2. La "tarjeta" blanca del formulario */
+.auth-container {
+    min-height: calc(100vh - 150px);
+    display: grid;
+    place-items: center;
+    padding: 55px 18px;
+    background: radial-gradient(ellipse at 50% 0%, #3a1b29 0%, #171319 48%, #100f12 100%);
+    color: #eee8ec;
+}
+
 .contenedor-login {
-    background-color: #ffffff;
-    /* Fondo blanco para el formulario */
-    padding: 40px;
-    border-radius: 8px;
-    /* Bordes sutilmente redondeados */
-    width: 100%;
-    max-width: 360px;
-    /* Ancho máximo para que no se desarme en PC */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    /* Sombra suave negra */
+    position: relative;
+    width: min(100%, 470px);
+    padding: 42px clamp(24px, 5vw, 48px);
+    border: 1px solid #54303e;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #211b22, #17151a);
+    box-shadow: 0 28px 80px #0008;
 }
 
-/* 3. El título principal */
-.titulo {
-    margin-top: 0;
-    margin-bottom: 24px;
-    color: #1a1a1a;
-    /* Negro casi puro */
-    font-size: 24px;
+.contenedor-login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c94c6b, transparent);
+}
+
+.auth-symbol {
+    display: grid;
+    place-items: center;
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 17px;
+    border-radius: 16px;
+    background: #3b1e2b;
+    font-size: 1.7rem;
+}
+
+.auth-kicker {
+    display: block;
+    color: #d8768c;
     text-align: center;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .18em;
 }
 
-/* 4. Separación entre los bloques de inputs */
+.contenedor-login h1,
+.contenedor-login h2 {
+    margin: 8px 0 9px;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 750;
+    letter-spacing: -.035em;
+}
+
+.auth-intro {
+    margin: 0 0 27px;
+    color: #aaa0a7;
+    text-align: center;
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
 .grupo-input {
-    margin-bottom: 20px;
+    margin-bottom: 19px;
 }
 
-/* 5. Los textos de arriba de los inputs (Email / Contraseña) */
 .etiqueta {
     display: block;
-    margin-bottom: 6px;
-    color: #000;
-    /* Negro */
-    font-size: 14px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    color: #e3dce1;
+    font-size: .85rem;
+    font-weight: 650;
 }
 
-/* 6. Las cajas donde el usuario escribe */
 .campo-texto {
+    display: block;
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #cccccc;
-    /* Borde gris claro */
-    border-radius: 4px;
-    background-color: #fafafa;
-    /* Fondo gris casi blanco */
-    color: #333333;
-    /* Texto interior gris oscuro */
-    font-size: 14px;
-    box-sizing: border-box;
-    /* Evita que el input se deforme con el padding */
-}
-
-/* Efecto cuando el usuario hace clic para escribir */
-.campo-texto:focus {
+    padding: 13px 15px;
+    color: #f8f4f6;
+    background: #111015;
+    border: 1px solid #453843;
+    border-radius: 9px;
     outline: none;
-    border-color: #1a1a1a;
-    /* El borde se vuelve negro al hacer clic */
+    transition: border-color .2s, box-shadow .2s;
 }
 
-/* 7. El botón de inicio de sesión */
+.campo-texto::placeholder {
+    color: #827780;
+}
+
+.campo-texto:focus {
+    border-color: #d05a76;
+    box-shadow: 0 0 0 3px #c44b6a2b;
+}
+
 .boton-ingresar {
     width: 100%;
-    padding: 12px;
-    background-color: #000000;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;    
-    margin-top: 10px;
+    margin-top: 7px;
+    padding: 13px 18px;
+    color: #fff;
+    background: linear-gradient(110deg, #8d2946, #bd3e5e);
+    border: 1px solid #c34c69;
+    border-radius: 9px;
+    font-weight: 750;
+    letter-spacing: .04em;
+    transition: filter .2s, transform .2s, box-shadow .2s;
 }
-/* Texto blanco */
-/* Botón negro */
- /* Cambia el cursor a la manito */
 
-/* Efecto cuando pasas el mouse por encima del botón */
 .boton-ingresar:hover {
-    background-color: #333333;
-    /* Se vuelve un gris oscuro */
+    filter: brightness(1.13);
+    transform: translateY(-1px);
+    box-shadow: 0 9px 22px #9f2f4b44;
 }
 
-/* 8. El texto y enlace de abajo */
+.boton-ingresar:focus-visible {
+    outline: 2px solid #f3a0b2;
+    outline-offset: 3px;
+}
+
 .texto-registro {
+    margin: 24px 0 0;
     text-align: center;
-    margin-top: 24px;
-    margin-bottom: 0;
+    font-size: .86rem;
 }
 
 .enlace {
-    color: #666666;
-    /* Gris intermedio */
-    font-size: 13px;
+    color: #e58ba0;
     text-decoration: none;
-    /* Le quita el subrayado por defecto */
 }
 
-/* Efecto cuando pasas el mouse por el enlace */
-.enlace:hover {
-    color: #000000;
-    /* Se vuelve negro */
+.enlace:hover,
+.enlace:focus-visible {
+    color: #ffc0ce;
     text-decoration: underline;
-    /* Aparece el subrayado */
+    text-underline-offset: 4px;
+}
+
+.error {
+    margin: 17px 0 0;
+    padding: 11px 13px;
+    color: #ffb8c3;
+    background: #4b1d2a;
+    border: 1px solid #92364f;
+    border-radius: 8px;
+    font-size: .88rem;
+}
+
+@media(max-width:480px) {
+    .auth-container {
+        padding: 32px 13px;
+    }
+
+    .contenedor-login {
+        padding: 34px 22px;
+        border-radius: 16px;
+    }
+
+    .contenedor-login h1,
+    .contenedor-login h2 {
+        font-size: 1.7rem;
+    }
 }

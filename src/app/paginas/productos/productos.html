@@ -1,22 +1,37 @@
-<div class="container">
-    <h1 class="title-prods">🦇 CD's y Vinilos 🦇</h1>
-    <div class="row">
-        @for (p of Productos; track p.id) {
-        @if(p.disponibilidad) {
+<main class="container products-page">
+  <header class="page-heading">
+    <span class="eyebrow">EXPLORÁ LA COLECCIÓN</span>
+    <h1>🦇 <b>CD's y Vinilos</b> 🦇</h1>
+    <p>Encontrá ese disco que no puede faltar en tu colección.</p>
+  </header>
 
-        <div class="card col-3 p-0 m-4">
-            <div class="imagen-wrapper">
-                <img src="{{ p.imagen }}" class="card-img-top" alt="">
-                <button (click)="agregarAfavoritos(p)" class="btn-favorito"><i class="bi bi-heart"></i></button>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ p.nombre }}</h5>
-                <p class="card-text">{{ p.descripcion }}</p>
-                <p class="card-text">{{ p.precio }}</p>
-                <button (click)="agregarACarrito(p)" class="btn btn-dark">Agregar al Carrito</button>
-            </div>
+  <div class="buscador">
+    <i class="bi bi-search"></i>
+    <input [(ngModel)]="buscar" placeholder="Buscar producto..." aria-label="Buscar producto">
+    <button (click)="cargar()">Buscar</button>
+  </div>
+
+  <div class="row products-grid">
+    @for (p of productos; track p.id) {
+    <div class="card col-12 col-sm-6 col-lg-4 col-xl-3 p-0 product-card">
+      <div class="product-card-inner">
+        <div class="product-image-wrap">
+          <img [src]="'http://localhost/api_proyecto/public/uploads/' + p.imagen" [alt]="p.nombre" class="card-img-top">
         </div>
-        }
-        }
+        <div class="card-body">
+          <h2 class="card-title">{{ p.nombre }}</h2>
+          <p class="card-text product-description">{{ p.descripcion }}</p>
+          <p class="card-text product-price">${{ p.precio }}</p>
+          <button (click)="agregar(p.id)" class="btn btn-dark">Agregar al carrito</button>
+        </div>
+      </div>
     </div>
-</div>
+    } @empty {
+    <div class="col-12">
+      <div class="products-empty"><i class="bi bi-disc"></i>
+        <p>No se encontraron productos :c</p>
+      </div>
+    </div>
+    }
+  </div>
+</main>
